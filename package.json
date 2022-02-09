@@ -6,6 +6,9 @@
   "engines": {
     "node": "^14 || ^16"
   },
+  "keywords": [
+    "ecosystem:aio-app-builder-template"
+  ],
   "scripts": {
     "test": "npm run lint && npm run unit-tests",
     "lint": "eslint .",
