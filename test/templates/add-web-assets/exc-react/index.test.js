@@ -17,14 +17,12 @@ const fs = require('fs')
 const path = require('path')
 const cloneDeep = require('lodash.clonedeep')
 
-const theGeneratorPath = require.resolve(
-  '../../../generators/add-web-assets/exc-react'
-)
+const { addWebAssets: { excReact } } = require('../../../../index')
 const Generator = require('yeoman-generator')
 
 describe('prototype', () => {
   test('exports a yeoman generator', () => {
-    expect(require(theGeneratorPath).prototype).toBeInstanceOf(Generator)
+    expect(excReact.prototype).toBeInstanceOf(Generator)
   })
 })
 
@@ -75,7 +73,7 @@ describe('run', () => {
     options['project-name'] = 'abc'
     options['web-src-folder'] = 'web-src'
     await helpers
-      .run(theGeneratorPath)
+      .run(excReact)
       .withOptions(options)
       .inTmpDir((dir) => {
         fs.writeFileSync(path.join(dir, '.env'), prevDotEnv)
@@ -121,7 +119,7 @@ describe('run', () => {
     options['has-backend'] = false
     options['web-src-folder'] = 'web-src'
     await helpers
-      .run(theGeneratorPath)
+      .run(excReact)
       .withOptions(options)
       .inTmpDir((dir) => {
         fs.writeFileSync(path.join(dir, '.env'), prevDotEnv)
