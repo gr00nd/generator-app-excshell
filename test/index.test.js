@@ -1,5 +1,5 @@
 /*
-Copyright 2021 Adobe. All rights reserved.
+Copyright 2022 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License. You may obtain a copy
 of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -12,9 +12,8 @@ governing permissions and limitations under the License.
 /* eslint-disable jest/expect-expect */ // => use assert
 
 const helpers = require('yeoman-test')
-const path = require('path')
 
-const { extension: { excshell } } = require('../../../../index')
+const excshell = require('../index')
 const Generator = require('yeoman-generator')
 
 const composeWith = jest.spyOn(Generator.prototype, 'composeWith')
@@ -41,7 +40,17 @@ describe('run', () => {
     await helpers.run(excshell)
       .withOptions(options)
     expect(composeWith).toHaveBeenCalledTimes(2)
-    expect(composeWith).toHaveBeenCalledWith(expect.stringContaining(path.normalize('add-action/generic')), expect.any(Object))
-    expect(composeWith).toHaveBeenCalledWith(expect.stringContaining(path.normalize('add-web-assets/exc-react')), expect.any(Object))
+    expect(composeWith).toHaveBeenCalledWith(
+      expect.objectContaining({
+        Generator: expect.any(Generator.constructor),
+        path: 'unknown'
+      }),
+      expect.any(Object))
+    expect(composeWith).toHaveBeenCalledWith(
+      expect.objectContaining({
+        Generator: expect.any(Generator.constructor),
+        path: 'unknown'
+      }),
+      expect.any(Object))
   })
 })
