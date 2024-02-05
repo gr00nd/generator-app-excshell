@@ -41,7 +41,7 @@
     "yeoman-test": "^6.0.0"
   },
   "dependencies": {
-    "@adobe/generator-add-action-generic": "^0.2.2",
+    "@adobe/generator-add-action-generic": "^1.0.0",
     "@adobe/generator-add-web-assets-exc-react": "^0.2.1",
     "@adobe/generator-app-common-lib": "^0.3.3",
     "lodash.camelcase": "^4.3.0",
